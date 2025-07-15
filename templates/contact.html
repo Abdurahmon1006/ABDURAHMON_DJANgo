@@ -1,6 +1,97 @@
 {% extends 'base.html' %}
 {% block container %}
     {% load static %}
+    <script>
+        function matnniNusxala1() {
+            // Matnni olish
+            var matn = document.getElementById("matn1").innerText;
+
+            // Yordamchi input yaratish
+            var input = document.createElement("textarea");
+            input.value = matn;
+            document.body.appendChild(input);
+
+            // Nusxalash
+            input.select();
+            document.execCommand("copy");
+
+            // Inputni olib tashlash
+            document.body.removeChild(input);
+
+            // Foydalanuvchiga bildirish
+            alert("Matn nusxalandi: " + matn);
+        }
+
+        function matnniNusxala2() {
+            // Matnni olish
+            var matn = document.getElementById("matn2").innerText;
+
+            // Yordamchi input yaratish
+            var input = document.createElement("textarea");
+            input.value = matn;
+            document.body.appendChild(input);
+
+            // Nusxalash
+            input.select();
+            document.execCommand("copy");
+
+            // Inputni olib tashlash
+            document.body.removeChild(input);
+
+            // Foydalanuvchiga bildirish
+            alert("Matn nusxalandi: " + matn);
+        }
+
+        function matnniNusxala3() {
+            // Matnni olish
+            var matn = document.getElementById("matn3").innerText;
+
+            // Yordamchi input yaratish
+            var input = document.createElement("textarea");
+            input.value = matn;
+            document.body.appendChild(input);
+
+            // Nusxalash
+            input.select();
+            document.execCommand("copy");
+
+            // Inputni olib tashlash
+            document.body.removeChild(input);
+
+            // Foydalanuvchiga bildirish
+            alert("Matn nusxalandi: " + matn);
+        }
+    </script>
+
+    <style>
+    .btn-link {
+        background: none;
+        border: none;
+        color: #007BFF;
+        font-size: 16px;
+        cursor: pointer;
+        text-align: left;
+        padding: 8px 0;
+    }
+
+    .btn-link i {
+        margin-right: 8px;
+    }
+</style><style>
+    .btn-link {
+        background: none;
+        border: none;
+        color: #007BFF;
+        font-size: 16px;
+        cursor: pointer;
+        text-align: left;
+        padding: 8px 0;
+    }
+
+    .btn-link i {
+        margin-right: 8px;
+    }
+</style>
 
     <div class="section-container">
         <div class="container">
@@ -16,10 +107,12 @@
                                 <div class="row">
                                     <div class="col-md-7">
                                         <div class="form-group">
-                                            <input type="email" class="form-control" id="elektron pochta" placeholder="elektron pochta">
+                                            <input type="email" class="form-control" id="elektron pochta"
+                                                   placeholder="elektron pochta">
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" id="mavzu" placeholder="mavzu">
+                                            <input type="text" class="form-control" id="xabar nima xaqida"
+                                                   placeholder="xabar nima xaqida">
                                         </div>
                                         <div class="form-group">
                                             <textarea class="form-control" rows="5"
@@ -30,28 +123,31 @@
                                     <div class="col-md-5 address-container">
                                         <ul class="list-unstyled">
                                             <li>
-                          <span class="fa-icon">
-                            <i class="fa fa-phone" aria-hidden="true"></i>
-                          </span>
-                                                +998 91 113 60 96
+                                                <button onclick="matnniNusxala1()" class="btn btn-link">
+                                                    <i class="fa fa-envelope"></i>
+                                                    <span id="matn1">abdurahmonk1987@gmail.com</span>
+                                                </button>
                                             </li>
                                             <li>
-                          <span class="fa-icon">
-                            <i class="fa fa-at" aria-hidden="true"></i>
-                          </span>
-                                                abdurahmonk1987@gmail.com
+                                                <button onclick="matnniNusxala2()" class="btn btn-link">
+                                                    <i class="fa fa-envelope"></i>
+                                                    <span id="matn2">abdurahmonk1006@gmail.com</span>
+                                                </button>
                                             </li>
+                                            <li>
+                                                <button onclick="matnniNusxala3()" class="btn btn-link">
+                                                    <i class="fa fa-phone"></i>
+                                                    <span id="matn3">+998 91 113 60 96</span>
+                                                </button>
+                                            </li>
+                                        </ul>
+
+
+                                        <ul>
                                             <span class="fa-icon">
-                            <i class="fa fa-at" aria-hidden="true"></i>
-                          </span>
-                                            abdurahmonk1006@gmail.com
-                                            </li>
-                                            <li>
-                          <span class="fa-icon">
-                            <i class="fa fa fa-map-marker" aria-hidden="true"></i>
-                          </span>
-                                                O'zbekiston Toshkent viloyati Chinoz tumani
-                                            </li>
+                            <i class="fa fa fa-map-marker" aria-hidden="true"></i></span>
+                                            <li2>O'zbekiston Toshkent viloyati Chinoz tumani</li2>
+
                                         </ul>
                                         <h3>Ijtimoiy tarmoqlarda menga obuna bo'ling</h3>
                                         <a href="http://www.facebook.com" title="facebook" class="fa-icon">
