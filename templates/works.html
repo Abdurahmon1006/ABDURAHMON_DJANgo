@@ -2,57 +2,156 @@
 {% block container %}
 {% load static %}
 
-    <div class="section-container">
-        <div class="container">
-            <div class="row">
+<style>
+/* Kartalar uchun zamonaviy dizayn */
+.card-container {
+  background: rgba(255,255,255,0.97);
+  border: 2px solid #007BFF;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0,123,255,0.10), 0 1.5px 8px rgba(0,0,0,0.08);
+  padding: 0 0 18px 0;
+  margin: 24px 0;
+  transition: box-shadow 0.3s, border-color 0.3s, transform 0.2s;
+  min-height: 340px;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+}
 
-                <div class="col-sm-8 col-sm-offset-2 section-container-spacer">
-                    <div class="text-center">
-                        <h1 class="h2">02 : Ishlar</h1>
-                       <h3> <p>Ishlarni ko'rishingiz va ular haqida to'liq bilib olishingiz mumkin.</p> <h3>
-                    </div>
-                </div>
+.card-container:hover {
+  box-shadow: 0 8px 32px rgba(0,123,255,0.18), 0 3px 16px rgba(0,0,0,0.12);
+  border-color: #0056b3;
+  transform: translateY(-6px) scale(1.03);
+}
 
-                <div class="col-md-12">
-                    <div id="myCarousel" class="carousel slide projects-carousel">
-                        <div class="carousel-inner">
-                            <div class="item active">
-                                <div class="row">
-                                    {% for work in works %}
-                                        <div class="col-sm-4">
-                                            <a href="{% url 'work' %}" title="" class="black-image-project-hover">
-                                                <img src="{{ work.rasmi.url }}" alt=""
-                                                     class="img-responsive">
-                                            </a>
-                                            <div class="card-container card-container-lg">
-                                                <h4>001/006</h4>
-                                                <h3>{{ work.name }}</h3>
-                                                <p>{{ work.info }}</p>
-                                                <a href="{% url 'work' %}" title="" class="btn btn-default">Discover</a>
-                                            </div>
-                                        </div>
-                                    {% endfor %}
-                                </div>
-                            </div>
-                        </div>
-                        <!--/carousel-inner-->
-                    <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
+.card-container .card-image {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  background: #f8f9fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-                    <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
+.card-container .card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.25s, box-shadow 0.25s;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+}
 
+.card-container:hover .card-image img {
+  transform: scale(1.05);
+  box-shadow: 0 8px 32px rgba(0,123,255,0.18), 0 3px 16px rgba(0,0,0,0.18);
+}
 
-{#                        <a class="left carousel-control" href="{% static '#myCarousel' %}" data-slide="prev">‹</a>#}
-{##}
-{#                        <a class="right carousel-control" href="{% static '#myCarousel' %}" data-slide="next">›</a>#}
-                    </div>
+.card-container .card-body {
+  padding: 18px 18px 0 18px;
+  width: 100%;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
 
+.card-container h4 {
+  color: #007BFF;
+  font-weight: 700;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
 
-                    <!--/myCarousel-->
-                </div>
+.card-container h3 {
+  color: #222;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
 
+.card-container p {
+  color: #444;
+  font-size: 15px;
+  margin-bottom: 16px;
+}
 
-            </div>
+.card-container .btn {
+  border-radius: 20px;
+  border: 2px solid #007BFF;
+  color: #007BFF;
+  background: transparent;
+  transition: background 0.2s, color 0.2s;
+  font-weight: 600;
+  padding: 6px 22px;
+  margin-top: auto;
+}
+
+.card-container .btn:hover {
+  background: #007BFF;
+  color: #fff;
+  border-color: #0056b3;
+}
+
+.section-title-blue {
+  color: #007BFF;
+  font-family: 'Montserrat', 'Arial', sans-serif;
+  font-weight: 800;
+  font-size: 2.5rem;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+  text-shadow: 0 2px 8px rgba(0,123,255,0.08);
+}
+
+.section-desc-blue {
+  color: #007BFF;
+  font-family: 'Montserrat', 'Arial', sans-serif;
+  font-weight: 500;
+  font-size: 1.25rem;
+  margin-bottom: 0;
+  margin-top: 8px;
+  text-shadow: 0 1px 4px rgba(0,123,255,0.08);
+}
+</style>
+
+<!-- Google Fonts (Montserrat) -->
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700,800&display=swap" rel="stylesheet">
+
+<div class="section-container">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2 section-container-spacer">
+        <div class="text-center">
+          <h1 class="section-title-blue">02 : Ishlar</h1>
+          <p class="section-desc-blue">Ishlarni ko'rishingiz va ular haqida to'liq bilib olishingiz mumkin.</p>
         </div>
+      </div>
     </div>
+
+    <!-- Kartalar tarmog'i (3ta ustunli) -->
+    <div class="row">
+      {% for work in works %}
+      <div class="col-md-4 col-sm-6">
+        <div class="card-container card-container-lg">
+          <div class="card-image">
+            <img src="{{ work.rasmi.url }}" alt="" class="img-responsive">
+          </div>
+          <div class="card-body">
+            <h4>001/006</h4>
+            <h3>{{ work.name }}</h3>
+            <p>{{ work.info }}</p>
+            <a href="{% url 'work' %}" class="btn btn-default">Discover</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
 
 {% endblock %}

@@ -1,175 +1,169 @@
 {% extends 'base.html' %}
 {% block container %}
-    {% load static %}
-    <script>
-        function matnniNusxala1() {
-            // Matnni olish
-            var matn = document.getElementById("matn1").innerText;
+{% load static %}
 
-            // Yordamchi input yaratish
-            var input = document.createElement("textarea");
-            input.value = matn;
-            document.body.appendChild(input);
+<script>
+function matnniNusxala1() {
+  var matn = document.getElementById("matn1").innerText;
+  var input = document.createElement("textarea");
+  input.value = matn;
+  document.body.appendChild(input);
+  input.select();
+  document.execCommand("copy");
+  document.body.removeChild(input);
+  alert("Matn nusxalandi: " + matn);
+}
+function matnniNusxala2() {
+  var matn = document.getElementById("matn2").innerText;
+  var input = document.createElement("textarea");
+  input.value = matn;
+  document.body.appendChild(input);
+  input.select();
+  document.execCommand("copy");
+  document.body.removeChild(input);
+  alert("Matn nusxalandi: " + matn);
+}
+function matnniNusxala3() {
+  var matn = document.getElementById("matn3").innerText;
+  var input = document.createElement("textarea");
+  input.value = matn;
+  document.body.appendChild(input);
+  input.select();
+  document.execCommand("copy");
+  document.body.removeChild(input);
+  alert("Matn nusxalandi: " + matn);
+}
+</script>
 
-            // Nusxalash
-            input.select();
-            document.execCommand("copy");
+<style>
+/* Barcha matn elementlari ko‘k */
+.section-container,
+.section-container h1,
+.section-container h2,
+.section-container h3,
+.section-container h4,
+.section-container h5,
+.section-container h6,
+.section-container p,
+.section-container li,
+.section-container span,
+.section-container label,
+.section-container a,
+.section-container textarea,
+.section-container input,
+.section-container select,
+.section-container option,
+.section-container blockquote,
+.section-container .alert,
+.section-container .btn,
+.section-container .fa,
+.section-container .fa-icon {
+  color: #007BFF !important;
+  border-color: #007BFF !important;
+}
 
-            // Inputni olib tashlash
-            document.body.removeChild(input);
+/* Input, textarea va select shaffof va ko‘k border */
+.section-container input,
+.section-container textarea,
+.section-container select {
+  background: transparent !important;
+  color: #007BFF !important;
+  border: 1px solid #007BFF !important;
+  box-shadow: none !important;
+}
 
-            // Foydalanuvchiga bildirish
-            alert("Matn nusxalandi: " + matn);
-        }
+/* Placeholder matnini ham ko‘k qilish */
+.section-container input::placeholder,
+.section-container textarea::placeholder {
+  color: #007BFF !important;
+  opacity: 1;
+}
 
-        function matnniNusxala2() {
-            // Matnni olish
-            var matn = document.getElementById("matn2").innerText;
-
-            // Yordamchi input yaratish
-            var input = document.createElement("textarea");
-            input.value = matn;
-            document.body.appendChild(input);
-
-            // Nusxalash
-            input.select();
-            document.execCommand("copy");
-
-            // Inputni olib tashlash
-            document.body.removeChild(input);
-
-            // Foydalanuvchiga bildirish
-            alert("Matn nusxalandi: " + matn);
-        }
-
-        function matnniNusxala3() {
-            // Matnni olish
-            var matn = document.getElementById("matn3").innerText;
-
-            // Yordamchi input yaratish
-            var input = document.createElement("textarea");
-            input.value = matn;
-            document.body.appendChild(input);
-
-            // Nusxalash
-            input.select();
-            document.execCommand("copy");
-
-            // Inputni olib tashlash
-            document.body.removeChild(input);
-
-            // Foydalanuvchiga bildirish
-            alert("Matn nusxalandi: " + matn);
-        }
-    </script>
-
-    <style>
-    .btn-link {
-        background: none;
-        border: none;
-        color: #007BFF;
-        font-size: 16px;
-        cursor: pointer;
-        text-align: left;
-        padding: 8px 0;
-    }
-
-    .btn-link i {
-        margin-right: 8px;
-    }
-</style><style>
-    .btn-link {
-        background: none;
-        border: none;
-        color: #007BFF;
-        font-size: 16px;
-        cursor: pointer;
-        text-align: left;
-        padding: 8px 0;
-    }
-
-    .btn-link i {
-        margin-right: 8px;
-    }
+/* Nusxalash tugmasi uchun */
+.btn-link {
+  background: none;
+  border: none;
+  color: #007BFF !important;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: left;
+  padding: 8px 0;
+}
+.btn-link i {
+  margin-right: 8px;
+}
 </style>
 
-    <div class="section-container">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="section-container-spacer text-center">
-                        <h1 class="h2">03 : Men bilan bog'lanish</h1>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-10 col-md-offset-1">
-                            <form action="" class="reveal-content">
-                                <div class="row">
-                                    <div class="col-md-7">
-                                        <div class="form-group">
-                                            <input type="email" class="form-control" id="elektron pochta"
-                                                   placeholder="elektron pochta">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" id="xabar nima xaqida"
-                                                   placeholder="xabar nima xaqida">
-                                        </div>
-                                        <div class="form-group">
-                                            <textarea class="form-control" rows="5"
-                                                      placeholder=" xabaringizni kiriting   "></textarea>
-                                        </div>
-                                        <button type="submit" class="btn btn-default btn-lg">Yuborish</button>
-                                    </div>
-                                    <div class="col-md-5 address-container">
-                                        <ul class="list-unstyled">
-                                            <li>
-                                                <button onclick="matnniNusxala1()" class="btn btn-link">
-                                                    <i class="fa fa-envelope"></i>
-                                                    <span id="matn1">abdurahmonk1987@gmail.com</span>
-                                                </button>
-                                            </li>
-                                            <li>
-                                                <button onclick="matnniNusxala2()" class="btn btn-link">
-                                                    <i class="fa fa-envelope"></i>
-                                                    <span id="matn2">abdurahmonk1006@gmail.com</span>
-                                                </button>
-                                            </li>
-                                            <li>
-                                                <button onclick="matnniNusxala3()" class="btn btn-link">
-                                                    <i class="fa fa-phone"></i>
-                                                    <span id="matn3">+998 91 113 60 96</span>
-                                                </button>
-                                            </li>
-                                        </ul>
-
-
-                                        <ul>
-                                            <span class="fa-icon">
-                            <i class="fa fa fa-map-marker" aria-hidden="true"></i></span>
-                                            <li2>O'zbekiston Toshkent viloyati Chinoz tumani</li2>
-
-                                        </ul>
-                                        <h3>Ijtimoiy tarmoqlarda menga obuna bo'ling</h3>
-                                        <a href="http://www.facebook.com" title="facebook" class="fa-icon">
-                                            <i class="fa fa-facebook"></i>
-                                        </a>
-                                        <a href="http://www.twitter.com" title="twitter" class="fa-icon">
-                                            <i class="fa fa-twitter"></i>
-                                        </a>
-                                        <a href="http://www.linkedin.com" title="linkedin" class="fa-icon">
-                                            <i class="fa fa-linkedin"></i>
-                                        </a>
-
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>
+<div class="section-container">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="section-container-spacer text-center">
+          <h1 class="h2">03 : Men bilan bog'lanish</h1>
         </div>
+        <div class="row">
+          <div class="col-md-10 col-md-offset-1">
+            <form action="" class="reveal-content">
+              <div class="row">
+                <div class="col-md-7">
+                  <div class="form-group">
+                    <input type="email" class="form-control" id="elektron pochta"
+                      placeholder="elektron pochta">
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" id="xabar nima xaqida"
+                      placeholder="xabar nima xaqida">
+                  </div>
+                  <div class="form-group">
+                    <textarea class="form-control" rows="5"
+                      placeholder=" xabaringizni kiriting "></textarea>
+                  </div>
+                  <button type="submit" class="btn btn-default btn-lg">Yuborish</button>
+                </div>
+                <div class="col-md-5 address-container">
+                  <ul class="list-unstyled">
+                    <li>
+                      <button onclick="matnniNusxala1()" class="btn btn-link">
+                        <i class="fa fa-envelope"></i>
+                        <span id="matn1">abdurahmonk1987@gmail.com</span>
+                      </button>
+                    </li>
+                    <li>
+                      <button onclick="matnniNusxala2()" class="btn btn-link">
+                        <i class="fa fa-envelope"></i>
+                        <span id="matn2">abdurahmonk1006@gmail.com</span>
+                      </button>
+                    </li>
+                    <li>
+                      <button onclick="matnniNusxala3()" class="btn btn-link">
+                        <i class="fa fa-phone"></i>
+                        <span id="matn3">+998 91 113 60 96</span>
+                      </button>
+                    </li>
+                  </ul>
+                  <ul>
+                    <span class="fa-icon">
+                      <i class="fa fa fa-map-marker" aria-hidden="true"></i></span>
+                    <li2>O'zbekiston Toshkent viloyati Chinoz tumani</li2>
+                  </ul>
+                  <h3>Ijtimoiy tarmoqlarda menga obuna bo'ling</h3>
+                  <a href="http://www.facebook.com" title="facebook" class="fa-icon">
+                    <i class="fa fa-facebook"></i>
+                  </a>
+                  <a href="http://www.twitter.com" title="twitter" class="fa-icon">
+                    <i class="fa fa-twitter"></i>
+                  </a>
+                  <a href="http://www.linkedin.com" title="linkedin" class="fa-icon">
+                    <i class="fa fa-linkedin"></i>
+                  </a>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
+</div>
 
 {% endblock %}
