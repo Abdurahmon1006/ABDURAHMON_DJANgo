@@ -154,6 +154,189 @@
   padding-left: 15px;
   padding-right: 15px;
 }
+
+/* Yutuqlar uchun maxsus uslublar */
+.yutuq-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(255,255,255,0.9);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  z-index: 10;
+}
+
+/* Yutuq darajalariga ko'ra border rangi */
+.yutuq-oltin {
+  border-color: #FFD700 !important;
+}
+.yutuq-oltin:hover {
+  border-color: #FFA500 !important;
+  box-shadow: 0 8px 32px rgba(255,215,0,0.25), 0 3px 16px rgba(0,0,0,0.12);
+}
+
+.yutuq-kumush {
+  border-color: #C0C0C0 !important;
+}
+.yutuq-kumush:hover {
+  border-color: #A9A9A9 !important;
+  box-shadow: 0 8px 32px rgba(192,192,192,0.25), 0 3px 16px rgba(0,0,0,0.12);
+}
+
+.yutuq-bronza {
+  border-color: #CD7F32 !important;
+}
+.yutuq-bronza:hover {
+  border-color: #A0522D !important;
+  box-shadow: 0 8px 32px rgba(205,127,50,0.25), 0 3px 16px rgba(0,0,0,0.12);
+}
+
+.yutuq-maxsus {
+  border-color: #9932CC !important;
+}
+.yutuq-maxsus:hover {
+  border-color: #8A2BE2 !important;
+  box-shadow: 0 8px 32px rgba(153,50,204,0.25), 0 3px 16px rgba(0,0,0,0.12);
+}
+
+/* Badge ranglari */
+.badge-oltin {
+  background: linear-gradient(45deg, #FFD700, #FFA500);
+}
+.badge-kumush {
+  background: linear-gradient(45deg, #C0C0C0, #A9A9A9);
+}
+.badge-bronza {
+  background: linear-gradient(45deg, #CD7F32, #A0522D);
+}
+.badge-maxsus {
+  background: linear-gradient(45deg, #9932CC, #8A2BE2);
+}
+
+/* Tugmalar guruhi uchun */
+.btn-group-yutuq {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.btn-daraja {
+  flex: 1;
+  min-width: 120px;
+  cursor: default;
+}
+.btn-daraja:hover {
+  background: transparent !important;
+  color: #007BFF !important;
+  transform: none;
+  cursor: default;
+}
+
+.btn-batafsil {
+  background: #17a2b8;
+  border-color: #17a2b8;
+  color: white;
+  padding: 6px 16px;
+  font-size: 12px;
+  border-radius: 20px;
+  transition: all 0.2s;
+}
+.btn-batafsil:hover {
+  background: #138496;
+  border-color: #117a8b;
+  color: white;
+  transform: translateY(-1px);
+}
+
+/* Modal uchun maxsus uslublar */
+.modal-yutuq .modal-dialog {
+  max-width: 600px;
+  margin: 30px auto;
+}
+
+.modal-yutuq .modal-content {
+  border-radius: 15px;
+  border: none;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+}
+
+.modal-yutuq .modal-header {
+  background: linear-gradient(135deg, #007BFF, #0056b3);
+  color: white;
+  border-radius: 15px 15px 0 0;
+  padding: 20px 25px;
+  border-bottom: none;
+}
+
+.modal-yutuq .modal-title {
+  font-weight: 700;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.modal-yutuq .modal-body {
+  padding: 25px;
+}
+
+.modal-yutuq .modal-footer {
+  border-top: 1px solid #eee;
+  padding: 15px 25px;
+  border-radius: 0 0 15px 15px;
+}
+
+.yutuq-details {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.yutuq-image-modal {
+  width: 100%;
+  max-height: 250px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.yutuq-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.yutuq-date {
+  color: #6c757d;
+  font-weight: 600;
+}
+
+.yutuq-level {
+  background: #007BFF;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.yutuq-description {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #495057;
+}
 </style>
 
 <!-- Google Fonts (Montserrat) -->
@@ -164,25 +347,39 @@
     <div class="row">
       <div class="col-sm-8 col-sm-offset-2 section-container-spacer">
         <div class="text-center">
-          <h1 class="section-title-blue">02 : Ishlar</h1>
-          <p class="section-desc-blue">Ishlarni ko'rishingiz va ular haqida to'liq bilib olishingiz mumkin.</p>
+          <h1 class="section-title-blue">02 : Yutuqlarim</h1>
+          <p class="section-desc-blue">Erishgan yutuqlarim va mukofotlarim haqida ma'lumot olishingiz mumkin.</p>
         </div>
       </div>
     </div>
 
-    <!-- Kartalar tarmog'i (3ta ustunli) -->
+    <!-- Yutuqlar kartalar tarmog'i (3ta ustunli) -->
     <div class="row">
-      {% for work in works %}
+      {% for yutuq in yutuqlar %}
       <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-        <div class="card-container card-container-lg">
+        <div class="card-container card-container-lg yutuq-{{ yutuq.darajasi }}">
           <div class="card-image">
-            <img src="{{ work.rasmi.url }}" alt="{{ work.name }}" class="img-responsive">
+            <img src="{{ yutuq.rasmi.url }}" alt="{{ yutuq.nomi }}" class="img-responsive">
+            <div class="yutuq-badge badge-{{ yutuq.darajasi }}">
+              {% if yutuq.darajasi == 'oltin' %}
+                🥇
+              {% elif yutuq.darajasi == 'kumush' %}
+                🥈
+              {% elif yutuq.darajasi == 'bronza' %}
+                🥉
+              {% else %}
+                ⭐
+              {% endif %}
+            </div>
           </div>
           <div class="card-body">
-            <h4>{{ forloop.counter|stringformat:"03d" }}/{{ works|length|stringformat:"03d" }}</h4>
-            <h3>{{ work.name }}</h3>
-            <p>{{ work.info }}</p>
-            <a href="{% url 'work' %}" class="btn btn-default">Discover</a>
+            <h3>{{ yutuq.nomi }}</h3>
+            <div class="btn-group-yutuq">
+              <span class="btn btn-default btn-daraja">{{ yutuq.get_darajasi_display }}</span>
+              <a href="{% url 'yutuq_detail' yutuq.id %}" class="btn btn-info btn-batafsil">
+                <i class="fa fa-info-circle"></i> Batafsil
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -190,6 +387,10 @@
     </div>
     <div class="row">
       {% endif %}
+      {% empty %}
+      <div class="col-12 text-center">
+        <p style="color: #007BFF; font-size: 18px; margin-top: 50px;">Hozircha yutuqlar yo'q. Tez orada qo'shiladi! 🏆</p>
+      </div>
       {% endfor %}
     </div>
   </div>

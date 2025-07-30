@@ -56,5 +56,10 @@ def work(request):
     return render(request, 'work.html', {'works': works})
 
 def works(request):
-    works = ish.objects.all()
-    return render(request, 'works.html', {'works': works})
+    # Endi works sahifasida yutuqlar ko'rsatiladi
+    yutuqlar = yutuq.objects.all()
+    return render(request, 'works.html', {'yutuqlar': yutuqlar})
+
+def yutuq_detail(request, id):
+    yutuq_obj = yutuq.objects.get(id=id)
+    return render(request, 'yutuq_detail.html', {'yutuq': yutuq_obj})
