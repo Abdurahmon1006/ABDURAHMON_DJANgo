@@ -117,6 +117,43 @@
   margin-top: 8px;
   text-shadow: 0 1px 4px rgba(0,123,255,0.08);
 }
+
+/* Kartalar uchun qo'shimcha responsive qoidalar */
+.mb-4 {
+  margin-bottom: 2rem !important;
+}
+
+/* Katta ekranlarda 3ta, o'rta ekranlarda 2ta, kichik ekranlarda 1ta */
+@media (min-width: 992px) {
+  .col-lg-4 {
+    width: 33.333333%;
+    float: left;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .col-md-6 {
+    width: 50%;
+    float: left;
+  }
+}
+
+@media (max-width: 767px) {
+  .col-sm-12 {
+    width: 100%;
+    float: none;
+  }
+}
+
+/* Kartalar orasidagi masofa */
+.row {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.row [class*="col-"] {
+  padding-left: 15px;
+  padding-right: 15px;
+}
 </style>
 
 <!-- Google Fonts (Montserrat) -->
@@ -136,19 +173,23 @@
     <!-- Kartalar tarmog'i (3ta ustunli) -->
     <div class="row">
       {% for work in works %}
-      <div class="col-md-4 col-sm-6">
+      <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
         <div class="card-container card-container-lg">
           <div class="card-image">
-            <img src="{{ work.rasmi.url }}" alt="" class="img-responsive">
+            <img src="{{ work.rasmi.url }}" alt="{{ work.name }}" class="img-responsive">
           </div>
           <div class="card-body">
-            <h4>001/006</h4>
+            <h4>{{ forloop.counter|stringformat:"03d" }}/{{ works|length|stringformat:"03d" }}</h4>
             <h3>{{ work.name }}</h3>
             <p>{{ work.info }}</p>
             <a href="{% url 'work' %}" class="btn btn-default">Discover</a>
           </div>
         </div>
       </div>
+      {% if forloop.counter|divisibleby:3 and not forloop.last %}
+    </div>
+    <div class="row">
+      {% endif %}
       {% endfor %}
     </div>
   </div>
