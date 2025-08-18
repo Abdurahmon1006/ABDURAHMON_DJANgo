@@ -26,6 +26,9 @@ def about(request):
 def home(request):
     return render(request, 'index.html')
 
+def secretpage(request):
+    return render(request, 'secretpage.html')
+
 def components(request):
     return render(request, 'components.html')
 
