@@ -1,5 +1,5 @@
 from django.urls import path
-from apps.views import *
+
 
 from ABDURAHMON_DJANgo.apps.views import *
 
@@ -10,6 +10,6 @@ urlpatterns = [
     path('work/',work,name='work'),
     path('works/',works,name='works'),
     path('about/',about,name='about'),
-    path('secretpage/',secretpage,name='secretpage'),
+    path('secretpage/',secretpage,name='secret page'),
     path('yutuq/<int:id>/', yutuq_detail, name='yutuq_detail'),
 ]
