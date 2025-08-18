@@ -10,6 +10,6 @@ urlpatterns = [
     path('work/',work,name='work'),
     path('works/',works,name='works'),
     path('about/',about,name='about'),
-    path('secretpage/',secretpage,name='secret'),
+    path('secretpage/',secretpage,name='secretpage'),
     path('yutuq/<int:id>/', yutuq_detail, name='yutuq_detail'),
 ]
