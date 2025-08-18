@@ -23,7 +23,7 @@ def about(request):
 
 
 # Create your views here.
-def home(request):
+def index(request):
     return render(request, 'index.html')
 
 def secretpage(request):
