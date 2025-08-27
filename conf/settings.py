@@ -66,12 +66,12 @@ WSGI_APPLICATION = 'conf.wsgi.application'
 
 
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 
 #
 # DATABASE ={
@@ -97,16 +97,16 @@ WSGI_APPLICATION = 'conf.wsgi.application'
 # }
 
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'my_db',
-        'USER': 'abdurahmon',
-        'PASSWORD': 'abd201717121413',   # bu yerda POSTGRES_PASSWORD dagi qiymat bo'lishi kerak
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'my_db',
+#         'USER': 'abdurahmon',
+#         'PASSWORD': 'abd201717121413',   # bu yerda POSTGRES_PASSWORD dagi qiymat bo'lishi kerak
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
 
 
 # Password validation
