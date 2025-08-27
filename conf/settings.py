@@ -63,6 +63,9 @@ WSGI_APPLICATION = 'conf.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+
+
+
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.sqlite3',
@@ -70,12 +73,36 @@ WSGI_APPLICATION = 'conf.wsgi.application'
 #     }
 # }
 
-DATABASE ={
+#
+# DATABASE ={
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': os.environ.get('my_db'),
+#         'USER': os.environ.get('abdurahmon'),
+#         'PASSWORD': os.environ.get('abd201717121413'),
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'my_db',
+#         'USER': 'abdurahmon',
+#         'PASSWORD': 'abd2017',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
+
+
+DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ.get('my_db'),
-        'USER': os.environ.get('abdurahmon'),
-        'PASSWORD': os.environ.get('abd201717121413'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'my_db',
+        'USER': 'abdurahmon',
+        'PASSWORD': 'abd201717121413',   # bu yerda POSTGRES_PASSWORD dagi qiymat bo'lishi kerak
         'HOST': 'localhost',
         'PORT': '5432',
     }
