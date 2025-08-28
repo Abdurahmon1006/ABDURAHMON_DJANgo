@@ -29,6 +29,9 @@ def index(request):
 def secretpage(request):
     return render(request, 'secretpage.html')
 
+def balloon(request):
+    return render(request, 'balloon.html')
+
 def components(request):
     return render(request, 'components.html')
 
