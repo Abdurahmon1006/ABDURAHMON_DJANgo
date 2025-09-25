@@ -30,7 +30,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<title>Title page</title>
+<!--<title>Title page</title>-->
 <link href="{% static './main.3f6952e4.css' %}" rel="stylesheet">
 
 <!-- Zamonaviy navbar uchun CSS va shrift -->
@@ -241,14 +241,17 @@ animate();
         <li class="{% if request.resolver_match.url_name == 'works' %}active{% endif %}">
           <a href="{% url 'works' %}" title="">02 : Yutuqlar</a>
         </li>
+        <li class="{% if request.resolver_match.url_name == 'games' %}active{% endif %}">
+          <a href="{% url 'games' %}" title="">03 : O'yinlar</a>
+        </li>
         <li class="{% if request.resolver_match.url_name == 'about' %}active{% endif %}">
-          <a href="{% url 'about' %}" title="">03 : Men haqimda</a>
+          <a href="{% url 'about' %}" title="">04 : Men haqimda</a>
         </li>
         <li class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}">
-          <a href="{% url 'contact' %}" title="">04 : Aloqa</a>
+          <a href="{% url 'contact' %}" title="">05 : Aloqa</a>
         </li>
         <li class="{% if request.resolver_match.url_name == 'components' %}active{% endif %}">
-          <a href="{% url 'components' %}" title="">05 : Components</a>
+          <a href="{% url 'components' %}" title="">06 : Components</a>
         </li>
       </ul>
     </div>

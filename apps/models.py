@@ -55,4 +55,33 @@ class yutuq(models.Model):
         return self.nomi
 
 
+# O'yinlar uchun model
+class game(models.Model):
+    KATEGORIYA_CHOICES = [
+        ('arkada', 'Arkada'),
+        ('puzzle', 'Puzzle'),
+        ('strategiya', 'Strategiya'),
+        ('sport', 'Sport'),
+        ('jang', 'Jang'),
+        ('sarguzasht', 'Sarguzasht'),
+        ('boshqa', 'Boshqa'),
+    ]
+    
+    nomi = models.CharField(max_length=100, verbose_name="O'yin nomi")
+    tavsif = models.TextField(verbose_name="O'yin haqida")
+    rasmi = models.ImageField(upload_to='oyinlar/', verbose_name="O'yin rasmi")
+    link = models.URLField(max_length=500, verbose_name="O'yin havolasi")
+    kategoriya = models.CharField(max_length=50, choices=KATEGORIYA_CHOICES, default='boshqa', verbose_name="O'yin kategoriyasi")
+    yaratilgan_sana = models.DateTimeField(auto_now_add=True, verbose_name="Qo'shilgan sana")
+    yangilangan_sana = models.DateTimeField(auto_now=True, verbose_name="Yangilangan sana")
+    
+    class Meta:
+        verbose_name = "O'yin"
+        verbose_name_plural = "O'yinlar"
+        ordering = ['-yaratilgan_sana']  # Eng yangi o'yinlar avval
+    
+    def __str__(self):
+        return self.nomi
+
+
 

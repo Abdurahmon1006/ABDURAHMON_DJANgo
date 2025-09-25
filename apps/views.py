@@ -69,3 +69,12 @@ def works(request):
 def yutuq_detail(request, id):
     yutuq_obj = yutuq.objects.get(id=id)
     return render(request, 'yutuq_detail.html', {'yutuq': yutuq_obj})
+
+def games(request):
+    # O'yinlar sahifasida barcha o'yinlarni ko'rsatamiz
+    oyinlar = game.objects.all()
+    return render(request, 'games.html', {'oyinlar': oyinlar})
+
+def game_detail(request, id):
+    game_obj = game.objects.get(id=id)
+    return render(request, 'game_detail.html', {'game': game_obj})

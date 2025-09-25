@@ -31,3 +31,12 @@ class yutuqAdmin(admin.ModelAdmin):
     list_filter = ('darajasi', 'sana')
     search_fields = ('nomi', 'tavsif')
     ordering = ('-sana',)
+
+# O'yinlar uchun admin
+@admin.register(game)
+class gameAdmin(admin.ModelAdmin):
+    list_display = ('nomi', 'kategoriya', 'yaratilgan_sana')
+    list_filter = ('kategoriya', 'yaratilgan_sana')
+    search_fields = ('nomi', 'tavsif')
+    ordering = ('-yaratilgan_sana',)
+    readonly_fields = ('yaratilgan_sana', 'yangilangan_sana')

@@ -1,0 +1,221 @@
+{% extends 'base.html' %}
+{% block container %}
+
+<style>
+.oyun-detail-container {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    margin-top: 40px;
+    margin-bottom: 40px;
+    padding: 35px;
+    color: #333;
+}
+
+.oyun-detail-header {
+    text-align: center;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #28a745;
+    padding-bottom: 20px;
+}
+
+.oyun-detail-title {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: #28a745;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.oyun-detail-badge {
+    font-size: 2.5rem;
+}
+
+.oyun-detail-body {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.oyun-detail-image-container {
+    flex: 1 1 400px;
+}
+
+.oyun-detail-image {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.oyun-detail-image:hover {
+    transform: scale(1.03);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+}
+
+.oyun-detail-info {
+    flex: 1 1 300px;
+    background: #f9fafb;
+    padding: 25px;
+    border-radius: 10px;
+    border-left: 5px solid #28a745;
+}
+
+.oyun-detail-info h3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.info-item i {
+    color: #28a745;
+    font-size: 1.2rem;
+    width: 20px;
+    text-align: center;
+}
+
+.info-item a {
+    color: #28a745;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+.info-item a:hover {
+    color: #218838;
+    text-decoration: underline;
+}
+
+.oyun-detail-description {
+    margin-top: 30px;
+    font-size: 1.2rem;
+    line-height: 1.7;
+    text-align: justify;
+    background: #fdfdfd;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* O'ynash tugmasi */
+.btn-oynash-katta {
+    background: #28a745;
+    border-color: #28a745;
+    color: white;
+    padding: 12px 30px;
+    font-size: 16px;
+    border-radius: 30px;
+    transition: all 0.3s;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 20px;
+}
+.btn-oynash-katta:hover {
+    background: #218838;
+    border-color: #1e7e34;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(40,167,69,0.4);
+    text-decoration: none;
+}
+
+/* Kategoriya badge */
+.kategoriya-badge {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.kategoriya-arkada { background: linear-gradient(45deg, #FF6B6B, #FF5252); color: white; }
+.kategoriya-puzzle { background: linear-gradient(45deg, #4ECDC4, #26C6DA); color: white; }
+.kategoriya-strategiya { background: linear-gradient(45deg, #45B7D1, #2196F3); color: white; }
+.kategoriya-sport { background: linear-gradient(45deg, #96CEB4, #66BB6A); color: white; }
+.kategoriya-jang { background: linear-gradient(45deg, #FECA57, #FFC107); color: white; }
+.kategoriya-sarguzasht { background: linear-gradient(45deg, #FF9FF3, #E91E63); color: white; }
+.kategoriya-boshqa { background: linear-gradient(45deg, #A0A0A0, #757575); color: white; }
+</style>
+
+<div class="container oyun-detail-container">
+    <div class="oyun-detail-header">
+        <h1 class="oyun-detail-title">
+            <span class="oyun-detail-badge">
+                {% if game.kategoriya == 'arkada' %}
+                    🕹️
+                {% elif game.kategoriya == 'puzzle' %}
+                    🧩
+                {% elif game.kategoriya == 'strategiya' %}
+                    ⚔️
+                {% elif game.kategoriya == 'sport' %}
+                    ⚽
+                {% elif game.kategoriya == 'jang' %}
+                    🥊
+                {% elif game.kategoriya == 'sarguzasht' %}
+                    🗺️
+                {% else %}
+                    🎮
+                {% endif %}
+            </span>
+            {{ game.nomi }}
+        </h1>
+    </div>
+
+    <div class="oyun-detail-body">
+        <div class="oyun-detail-image-container">
+            <img src="{{ game.rasmi.url }}" alt="{{ game.nomi }}" class="oyun-detail-image">
+        </div>
+        <div class="oyun-detail-info">
+            <h3>O'yin ma'lumotlari</h3>
+            <div class="info-item">
+                <i class="fa fa-calendar-alt"></i>
+                <span><strong>Qo'shilgan sana:</strong> {{ game.yaratilgan_sana|date:"d F Y" }}</span>
+            </div>
+            <div class="info-item">
+                <i class="fa fa-tags"></i>
+                <span><strong>Kategoriya:</strong> 
+                    <span class="kategoriya-badge kategoriya-{{ game.kategoriya }}">
+                        {{ game.get_kategoriya_display }}
+                    </span>
+                </span>
+            </div>
+            <div class="info-item">
+                <i class="fa fa-clock"></i>
+                <span><strong>Yangilangan:</strong> {{ game.yangilangan_sana|date:"d F Y H:i" }}</span>
+            </div>
+            <div class="info-item">
+                <i class="fa fa-external-link-alt"></i>
+                <span><strong>O'yin havolasi:</strong> <a href="{{ game.link }}" target="_blank">O'yinga o'tish</a></span>
+            </div>
+            
+            <!-- Katta O'ynash tugmasi -->
+            <div class="text-center">
+                <a href="{{ game.link }}" target="_blank" class="btn-oynash-katta">
+                    <i class="fa fa-play"></i> O'ynash
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="oyun-detail-description">
+        <h3>O'yin haqida</h3>
+        <p>{{ game.tavsif|linebreaks }}</p>
+    </div>
+</div>
+
+{% endblock %}
