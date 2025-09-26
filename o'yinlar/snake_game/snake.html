@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🐍 Ilon O‘yini</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            color: #333;
+        }
+        h1 {
+            margin: 10px 0;
+            color: #444;
+        }
+        #gameContainer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 500px;
+        }
+        canvas {
+            background: #111;
+            border: 2px solid #666;
+            border-radius: 10px;
+            width: 100%;
+            height: auto;
+        }
+        #controls {
+            margin-top: 10px;
+            display: flex;
+            gap: 10px;
+        }
+        button {
+            padding: 8px 14px;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            cursor: pointer;
+            background: #007bff;
+            color: #fff;
+            transition: 0.3s;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        #score {
+            margin: 10px 0;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        /* Mobil tugmalar */
+        #mobileControls {
+            display: grid;
+            grid-template-areas:
+        ". up ."
+        "left down right";
+            gap: 8px;
+            margin-top: 15px;
+        }
+        .ctrl-btn {
+            padding: 15px;
+            font-size: 18px;
+            border-radius: 6px;
+            border: none;
+            background: #28a745;
+            color: #fff;
+            cursor: pointer;
+        }
+        .ctrl-btn:active {
+            background: #1e7e34;
+        }
+        #btnUp { grid-area: up; }
+        #btnDown { grid-area: down; }
+        #btnLeft { grid-area: left; }
+        #btnRight { grid-area: right; }
+    </style>
+</head>
+<body>
+<h1>🐍 Ilon O‘yini</h1>
+<div id="gameContainer">
+    <canvas id="gameCanvas"></canvas>
+    <div id="controls">
+        <button id="startBtn">Boshlash</button>
+        <button id="stopBtn">Tugatish</button>
+    </div>
+    <div id="score">Hisob: 0</div>
+    <!-- Mobil tugmalar -->
+    <div id="mobileControls">
+        <button class="ctrl-btn" id="btnUp">⬆️</button>
+        <button class="ctrl-btn" id="btnDown">⬇️</button>
+        <button class="ctrl-btn" id="btnLeft">⬅️</button>
+        <button class="ctrl-btn" id="btnRight">➡️</button>
+    </div>
+</div>
+
+<script>
+    const canvas = document.getElementById("gameCanvas");
+    const ctx = canvas.getContext("2d");
+    const startBtn = document.getElementById("startBtn");
+    const stopBtn = document.getElementById("stopBtn");
+    const scoreDisplay = document.getElementById("score");
+
+    let box = 20;
+    let snake, food, direction, score, speed, gameInterval, isRunning;
+
+    function resizeCanvas() {
+        canvas.width = Math.floor(window.innerWidth / box) * box * 0.9;
+        canvas.height = Math.floor(window.innerHeight / box) * box * 0.5;
+    }
+
+    function initGame() {
+        snake = [{x: box*5, y: box*5}];
+        direction = null;
+        score = 0;
+        speed = 220; // sekinlashtirilgan
+        food = randomFood();
+        scoreDisplay.textContent = "Hisob: " + score;
+    }
+
+    function randomFood() {
+        return {
+            x: Math.floor(Math.random() * (canvas.width / box)) * box,
+            y: Math.floor(Math.random() * (canvas.height / box)) * box
+        };
+    }
+
+    function drawGame() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // ilon
+        ctx.fillStyle = "lime";
+        snake.forEach(s => ctx.fillRect(s.x, s.y, box, box));
+
+        // ovqat
+        ctx.fillStyle = "red";
+        ctx.fillRect(food.x, food.y, box, box);
+
+        // bosh
+        let head = {x: snake[0].x, y: snake[0].y};
+        if (direction === "LEFT") head.x -= box;
+        if (direction === "UP") head.y -= box;
+        if (direction === "RIGHT") head.x += box;
+        if (direction === "DOWN") head.y += box;
+
+        // devorga urilsa
+        if (head.x < 0 || head.y < 0 || head.x >= canvas.width || head.y >= canvas.height || snakeCollision(head)) {
+            stopGame();
+            alert("O‘yin tugadi! Yakuniy hisob: " + score);
+            startBtn.textContent = "Qaytadan boshlash";
+            return;
+        }
+
+        // ovqat yeyilsa
+        if (head.x === food.x && head.y === food.y) {
+            score++;
+            scoreDisplay.textContent = "Hisob: " + score;
+            food = randomFood();
+            if (score % 50 === 0 && speed > 60) {
+                speed -= 20;
+                clearInterval(gameInterval);
+                gameInterval = setInterval(drawGame, speed);
+            }
+        } else {
+            snake.pop();
+        }
+
+        snake.unshift(head);
+    }
+
+    function snakeCollision(head) {
+        return snake.some(segment => segment.x === head.x && segment.y === head.y);
+    }
+
+    document.addEventListener("keydown", e => {
+        if (e.key === "ArrowLeft" && direction !== "RIGHT") direction = "LEFT";
+        if (e.key === "ArrowUp" && direction !== "DOWN") direction = "UP";
+        if (e.key === "ArrowRight" && direction !== "LEFT") direction = "RIGHT";
+        if (e.key === "ArrowDown" && direction !== "UP") direction = "DOWN";
+    });
+
+    // Mobil tugmalar
+    document.getElementById("btnUp").onclick = () => { if (direction !== "DOWN") direction = "UP"; };
+    document.getElementById("btnDown").onclick = () => { if (direction !== "UP") direction = "DOWN"; };
+    document.getElementById("btnLeft").onclick = () => { if (direction !== "RIGHT") direction = "LEFT"; };
+    document.getElementById("btnRight").onclick = () => { if (direction !== "LEFT") direction = "RIGHT"; };
+
+    startBtn.addEventListener("click", () => {
+        if (!isRunning) {
+            resizeCanvas();
+            initGame();
+            gameInterval = setInterval(drawGame, speed);
+            isRunning = true;
+            startBtn.textContent = "Qaytadan boshlash";
+        } else {
+            clearInterval(gameInterval);
+            resizeCanvas();
+            initGame();
+            gameInterval = setInterval(drawGame, speed);
+        }
+    });
+
+    stopBtn.addEventListener("click", () => {
+        stopGame();
+        alert("O‘yin tugatildi!");
+    });
+
+    function stopGame() {
+        clearInterval(gameInterval);
+        isRunning = false;
+    }
+
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+</script>
+</body>
+</html>
